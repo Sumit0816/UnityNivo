@@ -1,0 +1,58 @@
+.welcome-section {
+  padding: 40px 0;
+}
+
+.welcome-box {
+  text-align: left;
+  padding: 40px;
+  background: linear-gradient(135deg, #0e1d38 0%, #081124 100%);
+  border: 1px solid var(--card-border-gold);
+  border-radius: var(--radius-lg);
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.welcome-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.welcome-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-white);
+  margin: 4px 0 12px 0;
+  letter-spacing: 0.5px;
+}
+
+.welcome-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin-bottom: 24px;
+}
+
+.welcome-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .welcome-box {
+    padding: 24px;
+    text-align: center;
+  }
+  .welcome-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .welcome-actions .btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,57 @@
+.income-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 28px 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.income-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 184, 0, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.income-card-icon {
+  margin-bottom: 16px;
+  background: rgba(255, 184, 0, 0.1);
+  padding: 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 184, 0, 0.2);
+}
+
+.income-card-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-white);
+  margin-bottom: 8px;
+}
+
+.income-card-highlight {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--gold-text);
+  margin-top: 4px;
+}
+
+.income-card-badge {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
