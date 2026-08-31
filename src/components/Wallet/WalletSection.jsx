@@ -1,17 +1,12 @@
 import React from 'react';
-import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
+import { Shield, Wallet } from 'lucide-react';
 import './WalletSection.css';
 
+
 /**
- * Wallet & Payment Methods Component
+ * Wallet & Payment Methods Component matching screenshot 2
  */
 export default function WalletSection() {
-  const walletLogos = [
-    { name: 'Trust Wallet', icon: '🛡️' },
-    { name: 'MetaMask', icon: '🦊' },
-    { name: 'SafePal', icon: '🔐' },
-  ];
-
   return (
     <section id="services" className="wallet-section">
       <div className="container">
@@ -22,39 +17,38 @@ export default function WalletSection() {
 
         {/* Supported Wallets Row */}
         <div className="wallets-row">
-          {walletLogos.map((w) => (
-            <div key={w.name} className="wallet-badge card-base">
-              <span className="wallet-icon">{w.icon}</span>
-              <span className="wallet-name">{w.name}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Rules Grid */}
-        <div className="grid-2 wallet-info-grid">
-          <div className="wallet-card card-base">
-            <div className="wallet-card-header text-deposit">
-              <ArrowDownRight size={22} />
-              <h3>DEPOSIT</h3>
-            </div>
-            <div className="wallet-card-content">
-              <p>Minimum <strong>$30</strong></p>
-              <p className="highlight-tag">USDT – BEP-20 Only</p>
-            </div>
+          <div className="wallet-badge card-base">
+            <span className="wallet-logo-icon trust-wallet"><Shield size={20} /></span>
+            <span className="wallet-name">Trust Wallet</span>
           </div>
 
-          <div className="wallet-card card-base">
-            <div className="wallet-card-header text-withdrawal">
-              <ArrowUpRight size={22} />
-              <h3>WITHDRAWAL</h3>
-            </div>
-            <div className="wallet-card-content">
-              <p>Minimum <strong>$15</strong> | <strong>5%</strong> Charge</p>
-              <p className="highlight-tag">Mon – Fri | Within 24 Hours</p>
-            </div>
+          <div className="wallet-badge card-base">
+            <span className="wallet-logo-icon metamask">🦊</span>
+            <span className="wallet-name">MetaMask</span>
+          </div>
+
+          <div className="wallet-badge card-base">
+            <span className="wallet-logo-icon safepal"><Wallet size={20} /></span>
+            <span className="wallet-name">SafePal</span>
+          </div>
+        </div>
+
+        {/* Info Grid Boxes */}
+        <div className="grid-2 wallet-info-grid">
+          <div className="wallet-box card-base">
+            <h3 className="wallet-box-title deposit-title">DEPOSIT</h3>
+            <p className="wallet-main-text">Minimum $30</p>
+            <p className="wallet-sub-text">USDT – BEP-20 Only</p>
+          </div>
+
+          <div className="wallet-box card-base">
+            <h3 className="wallet-box-title withdrawal-title">WITHDRAWAL</h3>
+            <p className="wallet-main-text">Minimum $15 <span className="divider">|</span> 5% Charge</p>
+            <p className="wallet-sub-text">Mon – Fri <span className="divider">|</span> Within 24 Hours</p>
           </div>
         </div>
       </div>
     </section>
   );
 }
+

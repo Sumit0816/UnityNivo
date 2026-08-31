@@ -3,57 +3,50 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 32px 20px;
+  padding: 28px 20px;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
 }
 
 .achiever-avatar-container {
-  position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .achiever-avatar {
-  width: 96px;
-  height: 96px;
+  width: 88px;
+  height: 88px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid rgba(255, 184, 0, 0.4);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-}
-
-.rank-badge {
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.8px;
-  padding: 3px 14px;
-  border-radius: var(--radius-full);
-  text-transform: uppercase;
-  color: #060b17;
-  white-space: nowrap;
-}
-
-.rank-badge.gold {
-  background: linear-gradient(135deg, #ffd700, #ffa500);
-}
-
-.rank-badge.platinum {
-  background: linear-gradient(135deg, #e5e4e2, #b4b4b4);
-}
-
-.rank-badge.diamond {
-  background: linear-gradient(135deg, #b9f2ff, #70d6ff);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
 .achiever-name {
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-white);
-  margin-bottom: 12px;
+  margin-bottom: 4px;
+}
+
+.rank-text-badge {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.rank-text-badge.gold {
+  color: #ffd700;
+}
+
+.rank-text-badge.platinum {
+  color: #e5e4e2;
+}
+
+.rank-text-badge.diamond {
+  color: #70d6ff;
 }
 
 .achiever-stats {
@@ -63,12 +56,13 @@
 }
 
 .stats-label {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
 }
 
 .stats-value {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 800;
-  color: var(--gold-text);
+  color: #ffffff;
 }
+

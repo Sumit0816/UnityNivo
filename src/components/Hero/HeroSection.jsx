@@ -1,73 +1,121 @@
-import React from 'react';
-import { TrendingUp, Award, ShieldCheck, ArrowRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './HeroSection.css';
 
 /**
- * Hero Banner Component - Premium Animated Hero Section
+ * Hero Banner Component - Full Screen Animated Image Slider with Text Overlay
  */
 export default function HeroSection({ onJoinNow }) {
+  const slides = [
+    {
+      id: 1,
+      titleCyan: 'DREAM BIG',
+      titleWhite: 'TRAVEL MORE',
+      subtitle: 'ACHIEVE YOUR GOALS WITH',
+      highlightText: 'UNITY NIVO',
+      btnText: 'JOIN NOW',
+      image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80',
+    },
+    {
+      id: 2,
+      titleCyan: 'EXPLORE THE WORLD',
+      titleWhite: 'WITH UNITY NIVO',
+      subtitle: 'EMPOWERING YOUR FINANCIAL FREEDOM',
+      highlightText: 'UNITED WE GROW',
+      btnText: 'REGISTER NOW',
+      image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80',
+    },
+    {
+      id: 3,
+      titleCyan: 'UNITED WE GROW',
+      titleWhite: 'BUILD YOUR NETWORK',
+      subtitle: 'TRANSPARENT DAILY ROI & REWARDS WITH',
+      highlightText: 'UNITY NIVO',
+      btnText: 'START EARNING',
+      image: 'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1920&q=80',
+    },
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isPaused, slides.length]);
+
+  const handleNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
   return (
-    <section id="home" className="hero-section">
-      <div className="hero-bg-glow"></div>
-      
-      <div className="container hero-container">
-        <div className="hero-content">
-          <div className="hero-badge-top">
-            <span className="live-dot"></span>
-            <span>NEXT-GEN NETWORKING PLATFORM</span>
-          </div>
+    <section 
+      id="home" 
+      className="hero-slider-section"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {slides.map((slide, index) => (
+        <div 
+          key={slide.id} 
+          className={`hero-slide ${index === currentSlide ? 'active' : ''}`}
+        >
+          <div 
+            className="hero-slide-bg" 
+            style={{ backgroundImage: `url(${slide.image})` }}
+          />
+          <div className="hero-slide-overlay" />
+          
+          <div className="container hero-slide-container">
+            <div className="hero-slide-content">
+              <h1 className="hero-title animate-text">
+                <span className="title-cyan">{slide.titleCyan}</span>
+                <span className="title-white">{slide.titleWhite}</span>
+              </h1>
 
-          <h1 className="hero-title">
-            DREAM BIG <br />
-            <span className="title-gradient">TRAVEL MORE</span>
-          </h1>
+              <p className="hero-subtitle animate-sub">
+                {slide.subtitle} <br />
+                <strong>{slide.highlightText}</strong>
+              </p>
 
-          <p className="hero-subtitle">
-            Empowering your financial freedom with <strong>UNITY NIVO</strong>'s 
-            transparent daily ROI & leadership rewards.
-          </p>
-
-          <div className="hero-cta">
-            <button className="btn btn-gold hero-btn" onClick={onJoinNow}>
-              <span>JOIN NOW & START EARNING</span>
-              <ArrowRight size={18} />
-            </button>
-          </div>
-
-          {/* Quick Stats Banner */}
-          <div className="hero-stats-row">
-            <div className="stat-pill">
-              <TrendingUp size={16} color="#ffb800" />
-              <span>0.5% Daily ROI</span>
-            </div>
-            <div className="stat-pill">
-              <Award size={16} color="#38bdf8" />
-              <span>Up to $1M Rank Bonus</span>
-            </div>
-            <div className="stat-pill">
-              <ShieldCheck size={16} color="#4ade80" />
-              <span>USDT (BEP-20)</span>
+              <div className="hero-cta animate-cta">
+                <button className="btn btn-gold hero-btn" onClick={onJoinNow}>
+                  {slide.btnText}
+                </button>
+              </div>
             </div>
           </div>
         </div>
+      ))}
 
-        <div className="hero-media">
-          <div className="hero-image-frame">
-            <img 
-              src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" 
-              alt="Luxury Beach Resort - Dream Big Travel More" 
-              className="hero-img"
-            />
-            <div className="hero-overlay-badge floating-badge-1">
-              <span>✈️ EXPLORE THE WORLD</span>
-            </div>
-            <div className="hero-overlay-badge floating-badge-2">
-              <span className="gold-sparkle">★</span>
-              <span>15% Booster Available</span>
-            </div>
-          </div>
-        </div>
+      {/* Navigation Arrows */}
+      <button className="slider-arrow prev" onClick={handlePrev} aria-label="Previous Slide">
+        <ChevronLeft size={28} />
+      </button>
+      <button className="slider-arrow next" onClick={handleNext} aria-label="Next Slide">
+        <ChevronRight size={28} />
+      </button>
+
+      {/* Pagination Dots */}
+      <div className="hero-slider-dots">
+        {slides.map((_, index) => (
+          <button 
+            key={index}
+            className={`slider-dot ${index === currentSlide ? 'active' : ''}`}
+            onClick={() => setCurrentSlide(index)}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
       </div>
     </section>
   );
 }
+
+

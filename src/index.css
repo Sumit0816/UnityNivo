@@ -318,6 +318,45 @@ a {
   }
 }
 
+/* Achievers Pagination Dots */
+.achievers-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.achievers-dots .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  transition: var(--transition-fast);
+}
+
+.achievers-dots .dot.active {
+  background: var(--gold-primary);
+  width: 22px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 184, 0, 0.4);
+}
+
+/* How It Works Connector Grid */
+.how-it-works-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.step-arrow-connector {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 300;
+  user-select: none;
+}
+
 /* Media Queries for Smooth Responsiveness */
 @media (max-width: 1024px) {
   .grid-4 {
@@ -325,6 +364,14 @@ a {
   }
   .grid-3 {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .how-it-works-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .step-arrow-connector {
+    display: none;
   }
 }
 
@@ -345,9 +392,13 @@ a {
     grid-template-columns: 1fr;
     gap: 18px;
   }
+  .how-it-works-grid {
+    grid-template-columns: 1fr;
+  }
   .btn {
     padding: 12px 24px;
     font-size: 0.88rem;
     width: 100%;
   }
 }
+

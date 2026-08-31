@@ -17,8 +17,6 @@ import Navbar from './components/Navbar';
 import HeroSection from './components/Hero';
 import WelcomeSection from './components/Welcome';
 import BusinessPlanTable from './components/BusinessPlan';
-import IncomeCalculator from './components/IncomeCalculator/IncomeCalculator';
-import DeveloperReference from './components/DeveloperReference/DeveloperReference';
 import WalletSection from './components/Wallet';
 import AboutSection from './components/About';
 import CustomerSupport from './components/CustomerSupport';
@@ -75,8 +73,8 @@ export default function App() {
     { title: 'ROI INCOME', highlight: '0.5%', badge: 'DAILY', Icon: TrendingUp },
     { title: 'REFERRAL INCOME', highlight: '15%', Icon: Users },
     { title: 'BOOSTER INCOME', highlight: '15%', Icon: Zap },
-    { title: 'RANK / ACHIEVEMENT BONUS', highlight: 'REWARDS', Icon: Award },
-    { title: 'LEADERSHIP MONTHLY BONUS', highlight: 'BONUS', Icon: Crown },
+    { title: 'RANK / ACHIEVEMENT BONUS', highlight: '', Icon: Award },
+    { title: 'LEADERSHIP MONTHLY BONUS', highlight: '', Icon: Crown },
   ];
 
   const socialBonuses = [
@@ -132,12 +130,12 @@ export default function App() {
         onLogin={() => handleOpenAuth('login')} 
       />
 
-      {/* Income Plan Overview Section (6 Reusable Cards Grid) */}
+      {/* Income Plan Overview Section */}
       <section id="income-plan" style={{ padding: '60px 0' }}>
         <div className="container">
           <div className="section-title">
             <h2>OUR <span>INCOME PLAN</span></h2>
-            <p>Six distinct income streams to maximize your growth</p>
+            <p>Multiple income opportunities to build your future</p>
           </div>
 
           <div className="grid-3">
@@ -178,21 +176,14 @@ export default function App() {
         </div>
       </section>
 
-      {/* Business Plan, Rank Achievement & Leadership Bonus Section */}
+      {/* Business Plan Section */}
       <BusinessPlanTable />
-
-      {/* Interactive Income Calculator & Rank Simulator */}
-      <IncomeCalculator />
-
-      {/* Developer Reference Dashboard (Checklist, Rule Matrix & Ledger Simulator) */}
-      <DeveloperReference />
 
       {/* Top Achievers Leaderboard Section */}
       <section id="achievers" style={{ padding: '60px 0' }}>
         <div className="container">
           <div className="section-title">
             <h2>TOP <span>ACHIEVERS</span></h2>
-            <p>Recognizing outstanding network performance</p>
           </div>
 
           <div className="grid-3">
@@ -206,26 +197,36 @@ export default function App() {
               />
             ))}
           </div>
+
+          {/* Carousel Pagination Dots */}
+          <div className="achievers-dots">
+            <span className="dot active"></span>
+            <span className="dot"></span>
+            <span className="dot"></span>
+          </div>
         </div>
       </section>
 
       {/* How It Works Process Section */}
-      <section style={{ padding: '60px 0', background: 'rgba(255, 184, 0, 0.02)' }}>
+      <section style={{ padding: '60px 0', background: 'rgba(255, 184, 0, 0.015)' }}>
         <div className="container">
           <div className="section-title">
             <h2>HOW IT <span>WORKS</span></h2>
-            <p>Start earning in 4 simple steps</p>
           </div>
 
-          <div className="grid-4">
+          <div className="how-it-works-grid">
             {howItWorksSteps.map((step, index) => (
-              <StepCard 
-                key={index}
-                stepNumber={step.stepNumber}
-                title={step.title}
-                description={step.description}
-                Icon={step.Icon}
-              />
+              <React.Fragment key={index}>
+                <StepCard 
+                  stepNumber={step.stepNumber}
+                  title={step.title}
+                  description={step.description}
+                  Icon={step.Icon}
+                />
+                {index < howItWorksSteps.length - 1 && (
+                  <div className="step-arrow-connector">→</div>
+                )}
+              </React.Fragment>
             ))}
           </div>
         </div>
@@ -263,3 +264,4 @@ export default function App() {
     </div>
   );
 }
+

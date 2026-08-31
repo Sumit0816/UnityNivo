@@ -3,7 +3,7 @@ import { Headset } from 'lucide-react';
 import './CustomerSupport.css';
 
 /**
- * 24/7 Customer Support Banner Component
+ * 24/7 Customer Support Banner Component matching screenshot 2
  */
 export default function CustomerSupport({ onContactUs }) {
   return (
@@ -13,14 +13,14 @@ export default function CustomerSupport({ onContactUs }) {
           <div className="support-info">
             <h2 className="support-title">24/7 CUSTOMER SUPPORT</h2>
             <p className="support-sub">We are here to help you anytime, anywhere.</p>
-            <button className="btn btn-gold" onClick={onContactUs}>
+            <button className="btn btn-gold support-btn" onClick={onContactUs}>
               CONTACT US
             </button>
           </div>
 
-          <div className="support-avatar">
-            <div className="avatar-circle-icon">
-              <Headset size={56} color="#ffb800" />
+          <div className="support-avatar-box">
+            <div className="avatar-blue-circle">
+              <Headset size={44} color="#38bdf8" />
             </div>
           </div>
         </div>
@@ -28,3 +28,4 @@ export default function CustomerSupport({ onContactUs }) {
     </section>
   );
 }
+

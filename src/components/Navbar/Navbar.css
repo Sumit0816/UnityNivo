@@ -4,36 +4,36 @@
   left: 0;
   width: 100%;
   z-index: 100;
-  background: rgba(6, 11, 23, 0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--card-border);
+  background: rgba(6, 11, 23, 0.95);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .navbar-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  height: 68px;
 }
 
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .brand-logo-hex {
   background: var(--gold-gradient);
   color: #060b17;
   font-weight: 900;
-  font-size: 1rem;
-  width: 38px;
-  height: 38px;
+  font-size: 0.9rem;
+  width: 34px;
+  height: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  box-shadow: 0 0 12px rgba(255, 184, 0, 0.4);
+  box-shadow: 0 0 10px rgba(255, 184, 0, 0.4);
 }
 
 .brand-text {
@@ -44,59 +44,77 @@
 .brand-name {
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 1.2rem;
-  letter-spacing: 0.8px;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
   color: var(--text-white);
   line-height: 1.1;
 }
 
 .brand-sub {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 700;
-  letter-spacing: 1.5px;
-  color: var(--gold-text);
-}
-
-.nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.nav-link {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  transition: var(--transition);
-}
-
-.nav-link:hover {
+  letter-spacing: 1.2px;
   color: var(--gold-text);
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .auth-btn-group {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
-.nav-auth-btn {
-  padding: 8px 18px;
-  font-size: 0.8rem;
+.btn-pill-outline {
+  padding: 6px 18px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  color: #ffffff;
+  background: rgba(14, 27, 51, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: var(--transition);
 }
 
-.mobile-menu-toggle {
-  display: none;
+.btn-pill-outline:hover {
+  border-color: var(--gold-primary);
+  color: var(--gold-primary);
+}
+
+.btn-pill-gold {
+  padding: 6px 18px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  color: #060b17;
+  background: var(--gold-gradient);
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(255, 184, 0, 0.3);
+  transition: var(--transition);
+}
+
+.btn-pill-gold:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(255, 184, 0, 0.45);
+}
+
+.menu-toggle-dots {
   background: transparent;
   border: none;
-  color: var(--text-white);
+  color: #ffffff;
   cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .user-profile-wrapper {
@@ -106,19 +124,19 @@
 .user-profile-btn {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: var(--card-bg);
   border: 1px solid var(--card-border-gold);
   border-radius: var(--radius-full);
-  padding: 6px 14px;
+  padding: 5px 12px;
   color: var(--text-white);
   cursor: pointer;
   font-family: var(--font-body);
 }
 
 .user-avatar-circle {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   background: var(--gold-gradient);
   color: #060b17;
@@ -128,7 +146,7 @@
 }
 
 .user-name {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
 }
 
@@ -136,13 +154,13 @@
   position: absolute;
   top: 110%;
   right: 0;
-  width: 200px;
+  width: 190px;
   background: #0d1a33;
   border: 1px solid var(--card-border-gold);
   border-radius: var(--radius-md);
   padding: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  animation: fadeIn 0.15s ease-out;
+  z-index: 105;
 }
 
 .dropdown-user-info {
@@ -152,13 +170,13 @@
 }
 
 .info-name {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: var(--text-white);
 }
 
 .info-email {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--text-muted);
 }
 
@@ -167,52 +185,73 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px;
+  padding: 6px 8px;
   background: transparent;
   border: none;
   color: #ff5555;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
   border-radius: 4px;
 }
 
-.dropdown-item:hover {
-  background: rgba(255, 85, 85, 0.1);
+/* Popover Navigation Dropdown matching reference screenshot */
+.menu-popover-dropdown {
+  position: absolute;
+  top: 62px;
+  right: 20px;
+  width: 210px;
+  background: rgba(9, 18, 36, 0.96);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  padding: 14px 10px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7);
+  z-index: 200;
+  animation: popoverIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.mobile-drawer {
-  display: none;
+@keyframes popoverIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
-@media (max-width: 1080px) {
-  .nav-menu {
-    display: none;
-  }
-  .mobile-menu-toggle {
-    display: block;
-  }
-  .mobile-drawer {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    background: #091224;
-    padding: 20px;
-    border-bottom: 1px solid var(--card-border);
-  }
-  .mobile-nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .mobile-nav-link {
+.popover-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.popover-nav-link {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 7px 14px;
+  border-radius: 6px;
+  transition: var(--transition-fast);
+}
+
+.popover-nav-link:hover {
+  background: rgba(255, 184, 0, 0.12);
+  color: var(--gold-primary);
+}
+
+@media (max-width: 480px) {
+  .brand-name {
     font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--text-muted);
   }
-  .mobile-auth-buttons {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
+  .brand-sub {
+    font-size: 0.55rem;
+  }
+  .btn-pill-outline, .btn-pill-gold {
+    padding: 5px 12px;
+    font-size: 0.76rem;
   }
 }
+

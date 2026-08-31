@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
-import { Menu, X, User, LogOut, ChevronDown, Calculator, Code } from 'lucide-react';
+import { MoreVertical, X, User, LogOut, ChevronDown } from 'lucide-react';
 import './Navbar.css';
 
 /**
- * Global Navigation Header Component
+ * Global Navigation Header Component - Matches Landing Page Reference Screenshot
  */
 export default function Navbar({ onOpenAuth, user, onLogout }) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
 
   const navLinks = [
     { label: 'Home', href: '#home' },
+    { label: 'About Us', href: '#about' },
+    { label: 'Services', href: '#services' },
+    { label: 'Business Plan', href: '#business-plan' },
     { label: 'Income Plan', href: '#income-plan' },
-    { label: 'Rank & Bonus', href: '#business-plan' },
-    { label: 'Calculator', href: '#calculator' },
-    { label: 'Dev Reference', href: '#dev-reference' },
-    { label: 'Wallet', href: '#services' },
-    { label: 'Achievers', href: '#achievers' },
+    { label: 'Rank & Bonus', href: '#income-plan' },
+    { label: 'Top Achievers', href: '#achievers' },
+    { label: 'Contact Us', href: '#contact' },
+    { label: 'Terms & Conditions', href: '#footer' },
   ];
 
   return (
@@ -31,15 +33,6 @@ export default function Navbar({ onOpenAuth, user, onLogout }) {
           </div>
         </a>
 
-        {/* Desktop Navigation Links */}
-        <nav className="nav-menu">
-          {navLinks.map((link) => (
-            <a key={link.label} href={link.href} className="nav-link">
-              {link.label}
-            </a>
-          ))}
-        </nav>
-
         {/* Action / User Area */}
         <div className="nav-actions">
           {user ? (
@@ -49,7 +42,7 @@ export default function Navbar({ onOpenAuth, user, onLogout }) {
                 onClick={() => setUserDropdownOpen(!userDropdownOpen)}
               >
                 <div className="user-avatar-circle">
-                  <User size={18} />
+                  <User size={16} />
                 </div>
                 <span className="user-name">{user.name}</span>
                 <ChevronDown size={14} />
@@ -70,13 +63,13 @@ export default function Navbar({ onOpenAuth, user, onLogout }) {
           ) : (
             <div className="auth-btn-group">
               <button 
-                className="btn btn-outline nav-auth-btn"
+                className="btn-pill-outline"
                 onClick={() => onOpenAuth('login')}
               >
                 Login
               </button>
               <button 
-                className="btn btn-gold nav-auth-btn"
+                className="btn-pill-gold"
                 onClick={() => onOpenAuth('register')}
               >
                 Register
@@ -84,50 +77,35 @@ export default function Navbar({ onOpenAuth, user, onLogout }) {
             </div>
           )}
 
-          {/* Mobile Hamburger Toggle */}
+          {/* 3 Vertical Dots Menu Toggle */}
           <button 
-            className="mobile-menu-toggle"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle Navigation"
+            className="menu-toggle-dots"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle Navigation Menu"
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {menuOpen ? <X size={22} /> : <MoreVertical size={22} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer Navigation */}
-      {mobileMenuOpen && (
-        <div className="mobile-drawer">
-          <nav className="mobile-nav-links">
+      {/* Dropdown Overlay Navigation Menu */}
+      {menuOpen && (
+        <div className="menu-popover-dropdown">
+          <nav className="popover-nav-list">
             {navLinks.map((link) => (
               <a 
                 key={link.label} 
                 href={link.href} 
-                className="mobile-nav-link"
-                onClick={() => setMobileMenuOpen(false)}
+                className="popover-nav-link"
+                onClick={() => setMenuOpen(false)}
               >
                 {link.label}
               </a>
             ))}
           </nav>
-          {!user && (
-            <div className="mobile-auth-buttons">
-              <button 
-                className="btn btn-outline"
-                onClick={() => { onOpenAuth('login'); setMobileMenuOpen(false); }}
-              >
-                Login
-              </button>
-              <button 
-                className="btn btn-gold"
-                onClick={() => { onOpenAuth('register'); setMobileMenuOpen(false); }}
-              >
-                Register
-              </button>
-            </div>
-          )}
         </div>
       )}
     </header>
   );
 }
+

@@ -3,54 +3,44 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 24px 18px;
+  padding: 24px 14px;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  position: relative;
+  border-radius: var(--radius-md);
+  flex: 1;
 }
 
-.step-header {
-  position: relative;
-  margin-bottom: 16px;
-}
-
-.step-icon-box {
-  width: 52px;
-  height: 52px;
+.step-icon-circle {
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: rgba(255, 184, 0, 0.08);
-  border: 1px dashed var(--card-border-gold);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 8px;
 }
 
-.step-number {
-  position: absolute;
-  top: -6px;
-  right: -8px;
-  background: var(--gold-gradient);
-  color: #060b17;
-  font-size: 0.75rem;
+.step-number-text {
+  font-size: 0.8rem;
   font-weight: 800;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: var(--text-white);
+  margin-bottom: 10px;
 }
 
 .step-title {
-  font-size: 0.9rem;
-  font-weight: 700;
+  font-size: 0.82rem;
+  font-weight: 800;
   text-transform: uppercase;
   color: var(--text-white);
   letter-spacing: 0.5px;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .step-desc {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
+  line-height: 1.3;
 }
+
