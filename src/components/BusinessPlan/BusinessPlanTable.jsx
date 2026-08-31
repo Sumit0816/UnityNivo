@@ -3,14 +3,14 @@ import './BusinessPlanTable.css';
 
 /**
  * Business Plan Landing Page Component
- * Renders the clean, transparent business plan specs table matching the landing page design.
+ * Renders the clean business plan specs table. Pricing numbers are hidden until user logs in.
  */
-export default function BusinessPlanTable() {
+export default function BusinessPlanTable({ isLoggedIn }) {
   const businessSpecs = [
-    { label: 'Minimum Deposit', value: '$30', isGold: true },
+    { label: 'Minimum Deposit', value: isLoggedIn ? '$30' : 'Login to view', isGold: true },
     { label: 'Deposit Currency', value: 'USDT (BEP-20)', isGold: false },
-    { label: 'Minimum Withdrawal', value: '$15', isGold: true },
-    { label: 'Withdrawal Charge', value: '5%', isGold: false },
+    { label: 'Minimum Withdrawal', value: isLoggedIn ? '$15' : 'Login to view', isGold: true },
+    { label: 'Withdrawal Charge', value: isLoggedIn ? '5%' : 'Login to view', isGold: false },
     { label: 'Withdrawal Days', value: 'Monday – Friday', isGold: false },
     { label: 'Withdrawal Time', value: 'Within 24 Hours', isGold: false },
   ];
@@ -41,4 +41,5 @@ export default function BusinessPlanTable() {
     </section>
   );
 }
+
 

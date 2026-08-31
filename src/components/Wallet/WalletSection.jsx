@@ -2,11 +2,10 @@ import React from 'react';
 import { Shield, Wallet } from 'lucide-react';
 import './WalletSection.css';
 
-
 /**
  * Wallet & Payment Methods Component matching screenshot 2
  */
-export default function WalletSection() {
+export default function WalletSection({ isLoggedIn }) {
   return (
     <section id="services" className="wallet-section">
       <div className="container">
@@ -37,13 +36,15 @@ export default function WalletSection() {
         <div className="grid-2 wallet-info-grid">
           <div className="wallet-box card-base">
             <h3 className="wallet-box-title deposit-title">DEPOSIT</h3>
-            <p className="wallet-main-text">Minimum $30</p>
+            <p className="wallet-main-text">{isLoggedIn ? 'Minimum $30' : 'Instant Deposit'}</p>
             <p className="wallet-sub-text">USDT – BEP-20 Only</p>
           </div>
 
           <div className="wallet-box card-base">
             <h3 className="wallet-box-title withdrawal-title">WITHDRAWAL</h3>
-            <p className="wallet-main-text">Minimum $15 <span className="divider">|</span> 5% Charge</p>
+            <p className="wallet-main-text">
+              {isLoggedIn ? 'Minimum $15 | 5% Charge' : 'Fast Withdrawal'}
+            </p>
             <p className="wallet-sub-text">Mon – Fri <span className="divider">|</span> Within 24 Hours</p>
           </div>
         </div>
@@ -51,4 +52,5 @@ export default function WalletSection() {
     </section>
   );
 }
+
 

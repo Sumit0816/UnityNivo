@@ -112,6 +112,8 @@ export default function App() {
     { stepNumber: '4', title: 'EARN & TRACK', description: 'Track income & withdraw', Icon: BarChart3 },
   ];
 
+  const isLoggedIn = !!user;
+
   return (
     <div className="app-main">
       {/* Top Header Navigation */}
@@ -146,6 +148,7 @@ export default function App() {
                 highlight={plan.highlight}
                 badge={plan.badge}
                 Icon={plan.Icon}
+                isLoggedIn={isLoggedIn}
               />
             ))}
           </div>
@@ -156,8 +159,8 @@ export default function App() {
       <section style={{ padding: '40px 0', background: 'rgba(255,255,255,0.015)' }}>
         <div className="container">
           <div className="section-title">
-            <h2>SOCIAL MEDIA <span>JOIN BONUS – $1</span></h2>
-            <p>Earn $0.25 for joining each platform</p>
+            <h2>SOCIAL MEDIA <span>{isLoggedIn ? 'JOIN BONUS – $1' : 'JOIN BONUS'}</span></h2>
+            <p>{isLoggedIn ? 'Earn $0.25 for joining each platform' : 'Earn rewards for joining each official platform'}</p>
           </div>
 
           <div className="grid-4">
@@ -170,6 +173,7 @@ export default function App() {
                 bgGlow={item.bgGlow}
                 Icon={item.Icon}
                 link="#"
+                isLoggedIn={isLoggedIn}
               />
             ))}
           </div>
@@ -177,7 +181,7 @@ export default function App() {
       </section>
 
       {/* Business Plan Section */}
-      <BusinessPlanTable />
+      <BusinessPlanTable isLoggedIn={isLoggedIn} />
 
       {/* Top Achievers Leaderboard Section */}
       <section id="achievers" style={{ padding: '60px 0' }}>
@@ -194,6 +198,7 @@ export default function App() {
                 rank={achiever.rank}
                 business={achiever.business}
                 avatarUrl={achiever.avatarUrl}
+                isLoggedIn={isLoggedIn}
               />
             ))}
           </div>
@@ -233,7 +238,8 @@ export default function App() {
       </section>
 
       {/* Wallet & Payment Methods Section */}
-      <WalletSection />
+      <WalletSection isLoggedIn={isLoggedIn} />
+
 
       {/* About Corporate Section */}
       <AboutSection onReadMore={() => showToast('Unity Nivo is a premier global networking platform founded in 2024.')} />

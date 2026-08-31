@@ -4,7 +4,7 @@ import './AchieverCard.css';
 /**
  * Top Achievers Leaderboard Card Component
  */
-export default function AchieverCard({ name, rank, business, avatarUrl }) {
+export default function AchieverCard({ name, rank, business, avatarUrl, isLoggedIn }) {
   const rankClass = rank.toLowerCase();
 
   return (
@@ -16,9 +16,10 @@ export default function AchieverCard({ name, rank, business, avatarUrl }) {
       <span className={`rank-text-badge ${rankClass}`}>{rank}</span>
       <div className="achiever-stats">
         <span className="stats-label">Business</span>
-        <span className="stats-value">{business}</span>
+        <span className="stats-value">{isLoggedIn ? business : 'Top Leader'}</span>
       </div>
     </div>
   );
 }
+
 
